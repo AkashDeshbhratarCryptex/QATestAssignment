@@ -1,0 +1,29 @@
+<div class="container">
+  <div>
+    <%= link_to "Home", home_index_path, method: :get %> | 
+    <%= link_to "New Topic", new_topic_home_index_path, method: :get %> |
+    <%= link_to "Topics", topics_home_index_path, method: :get %> |    
+    <%= link_to "My Topics", my_topics_home_index_path, method: :get %> |   
+    <%= link_to "New Question", new_question_home_index_path, method: :get %> |
+
+    <%= link_to "My Questions", my_questions_home_index_path, method: :get %> |
+    <%= link_to "User Followers & Followings", user_followers_following_home_index_path, method: :get %> |
+    <%= link_to "Topic Followers & Followings", topic_followers_following_home_index_path, method: :get %>    |
+    <%= link_to "Sign Out", destroy_user_session_path, method: :delete , style: "color: red"%>
+  </div>
+  <hr>
+  <h2>Asked Questions</h2>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <% @questions.each do |question| %>
+        <%= link_to question.title, question_answers_home_path(question.id), method: :get, class: 'question' %> 
+        <% if is_user_follow(question.user.id) %> 
+          | <%= link_to "Follow #{question.user.email}", follow_user_home_path(question.user.id), class: "follow_user" %>
+        <%else%>
+          | <i><%= link_to "Followed #{question.user.email}",{}, class: "follow_user" %></i>        
+        <%end%><br><br>
+      <%end%>
+    </div>
+  </div>
+</div>

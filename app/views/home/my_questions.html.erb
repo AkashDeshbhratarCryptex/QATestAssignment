@@ -1,0 +1,16 @@
+<div class="container">
+  <div>
+    <%= link_to "Home", home_index_path, method: :get %>
+  </div>
+  <hr>
+  <h2>My Question</h2>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <% @questions.each do |question| %>
+        <h2><%= question.title %></h2>
+        <p><%= question.description %></p>        
+      <%end%>
+    </div>
+  </div>
+</div>

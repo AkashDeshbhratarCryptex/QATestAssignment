@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>User Followers & Following</h2>
+  <div>
+    <%= link_to "Home", home_index_path, method: :get %>
+  </div>
+  <h2>Followers(<%= @user_followers.count %>)</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <% @user_followers.each do |user| %>
+        <p><%= user.email %></p> |
+      <%end%>
+    </div>
+  </div>  
+  <h2>Following(<%= @user_followings.count %>)</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <% @user_followings.each do |user| %>
+        <p><%= user.email %></p> |
+      <%end%>
+    </div>
+  </div>  
+
+</div>

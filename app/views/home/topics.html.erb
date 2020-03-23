@@ -1,0 +1,18 @@
+<div class="container">
+  <div>
+    <%= link_to "Home", home_index_path, method: :get %>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <% @topics.each do |topic| %>
+        <h3><%= topic.title %></h3>
+        <p><%= topic.description %></p>
+        <% if is_topic_follow(topic.user.id) %> 
+          | <%= link_to "Follow #{topic.user.email}", follow_topic_home_path(topic.user.id), class: "follow_user" %>
+        <%else%>
+          | <i><%= link_to "Followed #{topic.user.email}",{}, class: "follow_user" %></i>
+        <%end%><br><br>
+      <%end%>
+    </div>
+  </div>
+</div>

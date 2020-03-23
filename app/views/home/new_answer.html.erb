@@ -1,0 +1,18 @@
+<div>
+  <%= link_to "Home", home_index_path, method: :get %>
+</div>
+<h2>New Answer</h2>
+<%= form_for(@answer, as: 'answer', url: submit_answer_home_index_path) do |f| %>
+  <div class="field">
+    <%= f.hidden_field :question_id, value: "#{@question.id}" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>
